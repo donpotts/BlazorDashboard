@@ -1,0 +1,240 @@
+﻿/* Dashboard wrapper and container styles */
+.dashboard-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.controls {
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+    .controls button {
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.2s, transform 0.1s;
+    }
+
+        .controls button:active {
+            transform: scale(0.98);
+        }
+
+#add-card-btn {
+    background-color: #28a745;
+}
+
+    #add-card-btn:hover {
+        background-color: #218838;
+    }
+
+#reset-layout-btn {
+    background-color: #dc3545;
+}
+
+    #reset-layout-btn:hover {
+        background-color: #c82333;
+    }
+
+/* Main dashboard container - this is the key fix */
+.dashboard-container {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    background-color: #ffffff;
+    padding: 20px;
+    position: relative;
+    min-height: 0; /* Important for flex child to respect parent height */
+}
+
+/* Grid and card styles */
+.grid-stack {
+    background: transparent;
+    min-height: 100%;
+}
+
+.grid-stack-item-content {
+    color: #495057;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    border: 1px solid #e9ecef;
+    display: flex;
+    flex-direction: column;
+}
+
+    .grid-stack-item-content .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 20px;
+        font-weight: 600;
+        font-size: 1.1em;
+        color: #212529;
+        border-bottom: 1px solid #e9ecef;
+        flex-shrink: 0;
+    }
+
+.card-title {
+    flex-grow: 1;
+}
+
+.card-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.move-handle, .delete-handle {
+    cursor: pointer;
+    padding: 5px;
+    color: #adb5bd;
+    transition: color 0.2s;
+}
+
+    .move-handle:hover {
+        color: #343a40;
+    }
+
+    .delete-handle:hover {
+        color: #e74c3c;
+    }
+
+.grid-stack-item-content .card-body {
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.grid-stack-item-content canvas {
+    pointer-events: none;
+}
+
+.kpi-card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.kpi-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #007bff;
+}
+
+.activity-feed {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .activity-feed li {
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #f1f3f5;
+    }
+
+        .activity-feed li:last-child {
+            border-bottom: none;
+        }
+
+    .activity-feed .icon {
+        margin-right: 15px;
+        color: #6c757d;
+    }
+
+/* Dialog styles */
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+    .dialog-overlay.show {
+        display: flex;
+        opacity: 1;
+    }
+
+.dialog-box {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    max-width: 400px;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.dialog-overlay.show .dialog-box {
+    transform: scale(1);
+}
+
+.dialog-box h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.dialog-box p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.dialog-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+    .dialog-buttons button {
+        padding: 10px 25px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+#dialog-confirm-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+    #dialog-confirm-btn:hover {
+        background-color: #c82333;
+    }
+
+#dialog-cancel-btn {
+    background-color: #e9ecef;
+    color: #333;
+}
+
+    #dialog-cancel-btn:hover {
+        background-color: #dee2e6;
+    }
